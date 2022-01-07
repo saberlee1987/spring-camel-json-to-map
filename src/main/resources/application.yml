@@ -1,0 +1,29 @@
+server:
+  port: 9097
+  servlet:
+    encoding:
+      force: true
+      charset: UTF-8
+  max-http-header-size: 512000
+
+spring:
+  application:
+    name: json_to_map
+
+camel:
+  springboot:
+    route-controller-thread-pool-size: 30000
+    producer-template-cache-size: 15000
+    consumer-template-cache-size: 15000
+    jmx-management-statistics-level: extended
+
+  dataformat:
+    json-jackson:
+      auto-discover-object-mapper: true
+
+management:
+  endpoints:
+    web:
+      base-path: /actuators/${spring.application.name}
+      exposure:
+        include: '*'
